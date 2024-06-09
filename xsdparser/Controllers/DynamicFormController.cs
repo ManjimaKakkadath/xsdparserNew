@@ -7,7 +7,7 @@ public class DynamicFormController : Controller
     public IActionResult Index()
     {
         var parser = new XsdParser();
-        var elements = parser.Parse("C:\\Users\\manji\\Downloads\\xsd1.xsd");
+        var elements = parser.Parse("C:\\Users\\Manjima.Kakkadath\\Downloads\\xsdparserNew-master\\xsd1.xsd");
 
         var model = new DynamicFormViewModel
         {

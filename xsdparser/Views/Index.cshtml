@@ -1,19 +1,18 @@
-﻿<!-- Views/DynamicForm/Index.cshtml -->
-@model DynamicFormViewModel
+﻿@model DynamicFormViewModel
 
 <h2>Dynamic Form</h2>
 <form asp-action="SubmitForm" method="post">
     @foreach (var element in Model.FormModel.Elements)
     {
         <div class="form-group">
-            <label asp-for="FormData[@element.Name]">@element.Name</label>
-            if (element.Type == "boolean")
+            <label asp-for="FormData[element.Name]">@element.Name</label>
+            @if (element.Type == "boolean")
             {
-            <input type="checkbox" asp-for="FormData[@element.Name]" class="form-control" />
+                <input type="checkbox" asp-for="FormData[element.Name]" class="form-control" />
             }
             else
             {
-            <input type="text" asp-for="FormData[@element.Name]" class="form-control" />
+                <input type="text" asp-for="FormData[element.Name]" class="form-control" />
             }
         </div>
     }
