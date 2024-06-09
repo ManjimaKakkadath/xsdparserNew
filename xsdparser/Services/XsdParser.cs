@@ -16,12 +16,29 @@ public class XsdParser
         {
             foreach (XmlSchemaElement element in schema.Elements.Values)
             {
-                var formElement = new FormElement
+              
+              if(element.ElementSchemaType is XmlSchemaComplexType complexType)
                 {
-                    Name = element.Name,
-                    Type = element.SchemaTypeName.Name
-                };
-                elements.Add(formElement);
+
+                    if(complexType.Particle is XmlSchemaSequence sequence)
+                    {
+
+                        foreach(XmlSchemaObject item in sequence.Items)
+                        {
+                            if(item is XmlSchemaElement element2)
+                            {
+                                var formElement = new FormElement
+                                {
+
+                                    Name = element2.Name,
+                                    Type = element2.SchemaTypeName.Name
+                                };
+                                elements.Add(formElement);
+                            }
+                        }
+                    }
+                }
+             
             }
         }
 

@@ -6,18 +6,16 @@
     @foreach (var element in Model.FormModel.Elements)
     {
         <div class="form-group">
-            <label>@element.Name</label>
-            @if (element.Type == "boolean")
+            <label asp-for="FormData[@element.Name]">@element.Name</label>
+            if (element.Type == "boolean")
             {
-                <input type="checkbox" name="FormData[@element.Name]"/>
+            <input type="checkbox" asp-for="FormData[@element.Name]" class="form-control" />
             }
             else
             {
-                <input type="text" name="FormData[@element.Name]" class="form-control" />
+            <input type="text" asp-for="FormData[@element.Name]" class="form-control" />
             }
         </div>
     }
     <button type="submit" class="btn btn-primary">Submit</button>
 </form>
-
-
